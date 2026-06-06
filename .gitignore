@@ -1,12 +1,16 @@
-/*.js
-!.eslintrc.js
-!babel.config.js
+# Compiled output
+lib/
 
 # Dependency directories
-node_modules
+node_modules/
 
-# Optional npm cache directory
+# Yarn 4
+.yarn/cache
+.yarn/install-state.gz
+.yarn/unplugged
+.pnp.cjs
+.pnp.loader.mjs
+
+# Optional caches
 .npm
-
-# Optional eslint cache
 .eslintcache

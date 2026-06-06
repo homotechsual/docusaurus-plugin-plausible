@@ -1,0 +1,15 @@
+{
+  "permissions": {
+    "allow": [
+      "PowerShell(node --version)",
+      "PowerShell(corepack --version 2>&1)",
+      "PowerShell(corepack enable yarn 2>&1)",
+      "Bash(mkdir -p \"c:/Development/docusaurus-plugin-plausible/.github/workflows\")",
+      "WebFetch(domain:github.blog)",
+      "Bash(yarn install *)"
+    ],
+    "additionalDirectories": [
+      "c:\\Development\\docusaurus-plugin-plausible\\.github"
+    ]
+  }
+}
