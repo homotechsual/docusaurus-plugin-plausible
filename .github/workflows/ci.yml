@@ -18,6 +18,8 @@ jobs:
           node-version: 'lts/*'
           cache: 'yarn'
 
+      - run: npm install -g corepack@latest
+
       - run: corepack enable
 
       - run: yarn install --immutable
