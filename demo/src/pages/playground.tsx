@@ -1,131 +1,15 @@
 import React, { useState } from 'react'
 import Layout from '@theme/Layout'
 import Heading from '@theme/Heading'
-
-interface PlaygroundState {
-  domain: string
-  customDomain: string
-  hashBasedRouting: boolean
-  outboundLinks: boolean
-  fileDownloads: boolean
-  taggedEvents: boolean
-  revenue: boolean
-  captureOnLocalhost: boolean
-  manualPageviews: boolean
-  compat: boolean
-  pageviewProps: boolean
-  excludePaths: string
-  proxyApiEndpoint: string
-}
-
-const defaults: PlaygroundState = {
-  domain: 'your-site.com',
-  customDomain: '',
-  hashBasedRouting: false,
-  outboundLinks: false,
-  fileDownloads: false,
-  taggedEvents: false,
-  revenue: false,
-  captureOnLocalhost: false,
-  manualPageviews: false,
-  compat: false,
-  pageviewProps: false,
-  excludePaths: '',
-  proxyApiEndpoint: '',
-}
-
-function resolveScriptName(s: PlaygroundState): string {
-  const ext: string[] = []
-  if (s.hashBasedRouting) ext.push('hash')
-  if (s.outboundLinks) ext.push('outbound-links')
-  if (s.fileDownloads) ext.push('file-downloads')
-  if (s.taggedEvents) ext.push('tagged-events')
-  if (s.revenue) ext.push('revenue')
-  if (s.captureOnLocalhost) ext.push('local')
-  if (s.manualPageviews) ext.push('manual')
-  if (s.compat) ext.push('compat')
-  if (s.pageviewProps) ext.push('pageview-props')
-  return ext.length > 0 ? `plausible.${ext.join('.')}.js` : 'plausible.js'
-}
-
-function resolveScriptUrl(s: PlaygroundState): string {
-  return `https://${s.customDomain || 'plausible.io'}/js/${resolveScriptName(s)}`
-}
-
-function buildOptions(s: PlaygroundState): string[] {
-  const lines: string[] = [`        domain: '${s.domain}',`]
-  if (s.customDomain) lines.push(`        customDomain: '${s.customDomain}',`)
-  if (s.hashBasedRouting) lines.push(`        hashBasedRouting: true,`)
-  if (s.outboundLinks) lines.push(`        outboundLinks: true,`)
-  if (s.fileDownloads) lines.push(`        fileDownloads: true,`)
-  if (s.taggedEvents) lines.push(`        taggedEvents: true,`)
-  if (s.revenue) lines.push(`        revenue: true,`)
-  if (s.captureOnLocalhost) lines.push(`        captureOnLocalhost: true,`)
-  if (s.manualPageviews) lines.push(`        manualPageviews: true,`)
-  if (s.compat) lines.push(`        compat: true,`)
-  if (s.pageviewProps) lines.push(`        pageviewProps: true,`)
-  if (s.excludePaths) {
-    const patterns = s.excludePaths
-      .split('\n')
-      .map((p) => p.trim())
-      .filter(Boolean)
-    lines.push(`        excludePaths: [${patterns.map((p) => `'${p}'`).join(', ')}],`)
-  }
-  if (s.proxyApiEndpoint) lines.push(`        proxyApiEndpoint: '${s.proxyApiEndpoint}',`)
-  return lines
-}
-
-function generateTsConfig(s: PlaygroundState): string {
-  return [
-    `import plausiblePlugin from '@homotechsual/docusaurus-plugin-plausible'`,
-    `import type { PluginOptions } from '@homotechsual/docusaurus-plugin-plausible'`,
-    ``,
-    `export default {`,
-    `  plugins: [`,
-    `    [`,
-    `      plausiblePlugin,`,
-    `      {`,
-    ...buildOptions(s),
-    `      } satisfies PluginOptions,`,
-    `    ],`,
-    `  ],`,
-    `}`,
-  ].join('\n')
-}
-
-function generateJsConfig(s: PlaygroundState): string {
-  return [
-    `export default {`,
-    `  plugins: [`,
-    `    [`,
-    `      '@homotechsual/docusaurus-plugin-plausible',`,
-    `      {`,
-    ...buildOptions(s),
-    `      },`,
-    `    ],`,
-    `  ],`,
-    `}`,
-  ].join('\n')
-}
-
-function CopyButton({ text }: { text: string }) {
-  const [copied, setCopied] = useState(false)
-  function copy() {
-    navigator.clipboard.writeText(text).then(() => {
-      setCopied(true)
-      setTimeout(() => setCopied(false), 2000)
-    })
-  }
-  return (
-    <button
-      className="button button--sm button--secondary"
-      onClick={copy}
-      style={{ float: 'right', marginBottom: '0.5rem' }}
-    >
-      {copied ? '✅ Copied' : 'Copy'}
-    </button>
-  )
-}
+import { PlaygroundOutputAccordion } from '../components/PlaygroundOutputAccordion'
+import {
+  defaults,
+  resolveScriptName,
+  resolveScriptUrl,
+  generateTsConfig,
+  generateJsConfig,
+} from './playground-generators'
+import type { PlaygroundState } from './playground-generators'
 
 const booleanOptions: {
   key: keyof PlaygroundState
@@ -287,35 +171,23 @@ export default function PlaygroundPage() {
                 <tbody>
                   <tr>
                     <th style={{ paddingRight: '1rem', whiteSpace: 'nowrap' }}>Filename</th>
-                    <td>
-                      <code>{scriptName}</code>
-                    </td>
+                    <td><code>{scriptName}</code></td>
                   </tr>
                   <tr>
                     <th style={{ paddingRight: '1rem', whiteSpace: 'nowrap' }}>Full URL</th>
-                    <td>
-                      <code style={{ wordBreak: 'break-all' }}>{scriptUrl}</code>
-                    </td>
+                    <td><code style={{ wordBreak: 'break-all' }}>{scriptUrl}</code></td>
                   </tr>
                 </tbody>
               </table>
             </div>
 
-            <div style={{ marginBottom: '1.5rem' }}>
-              <Heading as="h3">docusaurus.config.ts</Heading>
-              <CopyButton text={tsConfig} />
-              <pre style={{ clear: 'both', overflowX: 'auto' }}>
-                <code>{tsConfig}</code>
-              </pre>
-            </div>
+            <PlaygroundOutputAccordion title="docusaurus.config.ts" defaultOpen copyText={tsConfig}>
+              <pre style={{ margin: 0 }}><code>{tsConfig}</code></pre>
+            </PlaygroundOutputAccordion>
 
-            <div>
-              <Heading as="h3">docusaurus.config.js</Heading>
-              <CopyButton text={jsConfig} />
-              <pre style={{ clear: 'both', overflowX: 'auto' }}>
-                <code>{jsConfig}</code>
-              </pre>
-            </div>
+            <PlaygroundOutputAccordion title="docusaurus.config.js" defaultOpen copyText={jsConfig}>
+              <pre style={{ margin: 0 }}><code>{jsConfig}</code></pre>
+            </PlaygroundOutputAccordion>
           </div>
         </div>
       </main>
