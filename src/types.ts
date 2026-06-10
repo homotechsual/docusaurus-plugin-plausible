@@ -5,6 +5,25 @@ export interface FileDownloadsOptions {
   addExtensions?: string[];
 }
 
+export interface EmbedOptions {
+  /** Auth token from Plausible → Visibility → Shared links (required) */
+  authToken: string;
+  /** Route path for the analytics page (default: '/analytics') */
+  routeBasePath?: string;
+  /** Page heading shown above the iframe (default: 'Analytics') */
+  title?: string;
+  /** Optional description paragraph shown below the heading */
+  description?: string;
+}
+
+export interface EmbedData {
+  authToken: string;
+  domain: string;
+  customDomain: string;
+  title: string;
+  description?: string;
+}
+
 export interface PluginOptions {
   /** The domain of your website as configured in Plausible (required) */
   domain: string;
@@ -37,4 +56,6 @@ export interface PluginOptions {
   excludePaths?: string[];
   /** Override the API endpoint used to send events (sets data-api on the script tag) */
   proxyApiEndpoint?: string;
+  /** Embed a Plausible shared-link dashboard as an automatic page */
+  embed?: EmbedOptions;
 }
