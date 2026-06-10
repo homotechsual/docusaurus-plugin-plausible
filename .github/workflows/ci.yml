@@ -29,3 +29,6 @@ jobs:
       - run: yarn build
 
       - run: yarn lint
+
+      - run: yarn test
+        continue-on-error: true
