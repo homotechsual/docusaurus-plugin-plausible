@@ -8,8 +8,8 @@ import {
   resolveScriptUrl,
   generateTsConfig,
   generateJsConfig,
-} from './playground-generators'
-import type { PlaygroundState } from './playground-generators'
+} from '../lib/playground-generators'
+import type { PlaygroundState } from '../lib/playground-generators'
 
 const booleanOptions: {
   key: keyof PlaygroundState
