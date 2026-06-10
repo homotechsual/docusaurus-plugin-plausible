@@ -1,6 +1,6 @@
 import { fileURLToPath } from 'url';
 import type { LoadContext, OptionValidationContext, Plugin } from '@docusaurus/types';
-import type { PluginOptions } from './types.js';
+import type { PluginOptions, EmbedData } from './types.js';
 
 function pluginPlausible(
   _context: LoadContext,
@@ -20,6 +20,7 @@ function pluginPlausible(
     pageviewProps,
     excludePaths = [],
     proxyApiEndpoint,
+    embed,
   } = options;
 
   if (!domain) {
@@ -49,10 +50,35 @@ function pluginPlausible(
   return {
     name: 'docusaurus-plugin-plausible',
 
+    getThemePath() {
+      return fileURLToPath(new URL('./theme', import.meta.url));
+    },
+
     getClientModules() {
       return isProd
         ? [fileURLToPath(new URL('./analytics.js', import.meta.url))]
         : [];
+    },
+
+    async contentLoaded({ actions }) {
+      if (!embed) return;
+      const { addRoute, createData } = actions;
+      const dataPath = await createData(
+        'embed-options.json',
+        JSON.stringify({
+          authToken: embed.authToken,
+          domain,
+          customDomain,
+          title: embed.title ?? 'Analytics',
+          description: embed.description,
+        } satisfies EmbedData),
+      );
+      addRoute({
+        path: embed.routeBasePath ?? '/analytics',
+        component: '@theme/PlausibleDashboard',
+        exact: true,
+        modules: { embedData: dataPath },
+      });
     },
 
     injectHtmlTags() {
