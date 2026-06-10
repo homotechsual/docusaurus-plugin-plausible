@@ -6,3 +6,11 @@ declare module '@docusaurus/ExecutionEnvironment' {
   };
   export default ExecutionEnvironment;
 }
+
+// @docusaurus/module-type-aliases omits title/description; @docusaurus/theme-classic adds them.
+declare module '@theme/Layout' {
+  interface Props {
+    readonly title?: string;
+    readonly description?: string;
+  }
+}

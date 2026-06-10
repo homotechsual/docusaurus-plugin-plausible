@@ -1,3 +1,4 @@
+import React from 'react';
 import Layout from '@theme/Layout';
 import type { EmbedData } from '../../types.js';
 
@@ -5,7 +6,7 @@ interface Props {
   embedData: EmbedData;
 }
 
-export default function PlausibleDashboard({ embedData }: Props): JSX.Element {
+export default function PlausibleDashboard({ embedData }: Props): React.ReactElement {
   const { authToken, domain, customDomain, title, description } = embedData;
   const src = `https://${customDomain}/share/${domain}?auth=${authToken}&embed=true&theme=system&background=transparent`;
 
