@@ -18,7 +18,7 @@ export default function PlausibleDashboard({ embedData }: Props): React.ReactEle
         <iframe
           src={src}
           loading="lazy"
-          style={{ width: '100%', height: '1500px', border: 'none' }}
+          style={{ width: '100%', height: 'calc(100dvh - var(--ifm-navbar-height) - 7rem)', minHeight: '600px', border: 'none' }}
           title={title}
         />
       </main>
