@@ -145,7 +145,12 @@ export function validateOptions({
   if (typeof opts['domain'] !== 'string' || !opts['domain']) {
     throw new Error('[docusaurus-plugin-plausible] You must specify the `domain` option.');
   }
-  return opts as unknown as PluginOptions;
+  // Plugins using manual validation (not Joi) must explicitly preserve `id` so
+  // Docusaurus can use plugin.options.id when namespacing generated-file paths.
+  return {
+    ...opts,
+    id: typeof opts['id'] === 'string' ? opts['id'] : 'default',
+  } as unknown as PluginOptions;
 }
 
 // Cast to satisfy Docusaurus's PluginModule<unknown> — options are validated
