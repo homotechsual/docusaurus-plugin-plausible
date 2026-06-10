@@ -14,3 +14,7 @@ node_modules/
 # Optional caches
 .npm
 .eslintcache
+
+# Demo site build output
+demo/build/
+demo/.docusaurus/
