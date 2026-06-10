@@ -20,7 +20,11 @@ export default (function () {
   }
 
   return {
-    onRouteUpdate({ location }: RouteUpdateArgs): void {
+    onRouteUpdate({ location, previousLocation }: RouteUpdateArgs): void {
+      if (previousLocation === null) {
+        return;
+      }
+
       const pathIsExcluded =
         location != null &&
         typeof window.plausibleExcludePaths !== 'undefined' &&
