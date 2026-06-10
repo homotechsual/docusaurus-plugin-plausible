@@ -2726,7 +2726,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@docusaurus/utils@npm:3.10.1":
+"@docusaurus/utils@npm:3.10.1, @docusaurus/utils@npm:^3.10.1":
   version: 3.10.1
   resolution: "@docusaurus/utils@npm:3.10.1"
   dependencies:
@@ -6080,6 +6080,7 @@ __metadata:
     "@docusaurus/preset-classic": "npm:^3.10.1"
     "@docusaurus/tsconfig": "npm:^3.10.1"
     "@docusaurus/types": "npm:^3.10.1"
+    "@docusaurus/utils": "npm:^3.10.1"
     "@homotechsual/docusaurus-plugin-plausible": "workspace:*"
     prism-react-renderer: "npm:^2.4.1"
     react: "npm:^19.2.7"
