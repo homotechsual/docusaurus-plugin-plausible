@@ -20,6 +20,12 @@ const config: Config = {
       '@homotechsual/docusaurus-plugin-plausible',
       {
         domain: 'plausible.docusaurus.homotechsual.dev',
+        embed: {
+          authToken: process.env.PLAUSIBLE_SHARED_LINK_TOKEN ?? '',
+          routeBasePath: '/analytics',
+          title: 'Live Analytics',
+          description: 'Real visitor data for this demo site, powered by Plausible.',
+        },
       },
     ],
   ],
@@ -49,6 +55,7 @@ const config: Config = {
         },
         { to: '/demo', label: 'Live Demo', position: 'left' },
         { to: '/playground', label: 'Playground', position: 'left' },
+        { to: '/analytics', label: 'Analytics', position: 'left' },
         {
           href: 'https://github.com/homotechsual/docusaurus-plugin-plausible',
           label: 'GitHub',
@@ -75,6 +82,7 @@ const config: Config = {
           items: [
             { label: 'Live Demo', to: '/demo' },
             { label: 'Config Playground', to: '/playground' },
+            { label: 'Analytics', to: '/analytics' },
           ],
         },
         {
