@@ -46,4 +46,5 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 [Unreleased]: ../../compare/83480db...HEAD
 
-[1.0.0]: ../../releases/tag/v1.0.0
+[1.0.0]: ../../releases/tag/1.0.0
+[1.1.0]: ../../releases/tag/1.1.0
