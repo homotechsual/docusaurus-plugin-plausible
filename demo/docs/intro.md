@@ -4,6 +4,10 @@ sidebar_position: 1
 
 # Introduction
 
+[![NPM Version](https://img.shields.io/npm/v/%40homotechsual%2Fdocusaurus-plugin-plausible?style=for-the-badge)](https://www.npmjs.com/package/@homotechsual/docusaurus-plugin-plausible)
+[![NPM Last Update](https://img.shields.io/npm/last-update/%40homotechsual%2Fdocusaurus-plugin-plausible?style=for-the-badge)](https://www.npmjs.com/package/@homotechsual/docusaurus-plugin-plausible)
+[![NPM Downloads](https://img.shields.io/npm/dy/%40homotechsual%2Fdocusaurus-plugin-plausible?style=for-the-badge)](https://www.npmjs.com/package/@homotechsual/docusaurus-plugin-plausible)
+
 **Plausible for Docusaurus** integrates [Plausible Analytics](https://plausible.io/) into your Docusaurus site. It injects the Plausible tracking script, handles route-change pageviews automatically, and supports the full range of Plausible script extensions.
 
 This plugin was forked from [InfraCost's docusaurus-plugin-plausible](https://github.com/infracost/docusaurus-plugin-plausible), originally inspired by [gatsby-plugin-plausible](https://github.com/Aquilio/gatsby-plugin-plausible). It has been rewritten in TypeScript and updated for Docusaurus v3+.
