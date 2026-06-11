@@ -3976,6 +3976,15 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@types/node@npm:^25.9.3":
+  version: 25.9.3
+  resolution: "@types/node@npm:25.9.3"
+  dependencies:
+    undici-types: "npm:>=7.24.0 <7.24.7"
+  checksum: 10c0/72d3aece9d42c2c641bcd3f3cb2dc2828b4bd384dfcbd910c404b8859a68bd69d50c4769ce7defd4ff5e049768e23e615f09407ea2cbbb5f44b90d75a7c6b8ca
+  languageName: node
+  linkType: hard
+
 "@types/prismjs@npm:^1.26.0":
   version: 1.26.6
   resolution: "@types/prismjs@npm:1.26.6"
@@ -4038,7 +4047,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@types/react@npm:^19.0.0":
+"@types/react@npm:^19.0.0, @types/react@npm:^19.2.17":
   version: 19.2.17
   resolution: "@types/react@npm:19.2.17"
   dependencies:
@@ -6097,7 +6106,8 @@ __metadata:
     "@docusaurus/utils": "npm:^3.10.1"
     "@homotechsual/docusaurus-plugin-plausible": "workspace:*"
     "@mdx-js/react": "npm:^3.1.1"
-    "@types/react": "npm:^19.0.0"
+    "@types/node": "npm:^25.9.3"
+    "@types/react": "npm:^19.2.17"
     clsx: "npm:^2.1.1"
     prism-react-renderer: "npm:^2.4.1"
     react: "npm:^19.2.7"

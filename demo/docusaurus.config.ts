@@ -2,6 +2,7 @@ import { themes as prismThemes } from 'prism-react-renderer'
 import type { Config } from '@docusaurus/types'
 import type * as Preset from '@docusaurus/preset-classic'
 import { DOCUSAURUS_VERSION } from '@docusaurus/utils'
+import plausiblePlugin, { type PluginOptions as PlausiblePluginOptions } from '@homotechsual/docusaurus-plugin-plausible'
 
 const config: Config = {
   title: 'Plausible for Docusaurus',
@@ -21,7 +22,7 @@ const config: Config = {
   },
   plugins: [
     [
-      '@homotechsual/docusaurus-plugin-plausible',
+      plausiblePlugin,
       {
         domain: 'plausible.docusaurus.homotechsual.dev',
         embed: {
@@ -30,7 +31,7 @@ const config: Config = {
           title: 'Live Analytics',
           description: 'Real visitor data for this demo site, powered by Plausible.',
         },
-      },
+      } satisfies PlausiblePluginOptions,
     ],
   ],
   presets: [

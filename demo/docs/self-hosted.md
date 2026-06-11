@@ -19,7 +19,7 @@ Sets the hostname used for both the preconnect hint and the script URL. Defaults
 
 This loads the script from:
 
-```
+```text
 https://analytics.your-company.com/js/plausible.js
 ```
 
@@ -39,10 +39,10 @@ Plausible's script will POST pageview events to `https://your-site.com/api/event
 ## Combined example
 
 ```ts
-import plausiblePlugin from '@homotechsual/docusaurus-plugin-plausible'
-import type { PluginOptions } from '@homotechsual/docusaurus-plugin-plausible'
+import type { Config } from '@docusaurus/types'
+import plausiblePlugin, { type PluginOptions } from '@homotechsual/docusaurus-plugin-plausible'
 
-export default {
+const config: Config = {
   plugins: [
     [
       plausiblePlugin,
@@ -54,4 +54,6 @@ export default {
     ],
   ],
 }
+
+export default config
 ```

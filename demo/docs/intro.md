@@ -21,10 +21,10 @@ yarn add @homotechsual/docusaurus-plugin-plausible
 Add the plugin to your `docusaurus.config.ts`:
 
 ```ts
-import plausiblePlugin from '@homotechsual/docusaurus-plugin-plausible'
-import type { PluginOptions } from '@homotechsual/docusaurus-plugin-plausible'
+import type { Config } from '@docusaurus/types'
+import plausiblePlugin, { type PluginOptions } from '@homotechsual/docusaurus-plugin-plausible'
 
-export default {
+const config: Config = {
   plugins: [
     [
       plausiblePlugin,
@@ -34,6 +34,8 @@ export default {
     ],
   ],
 }
+
+export default config
 ```
 
 Or in `docusaurus.config.js`:
