@@ -62,6 +62,11 @@ const config: Config = {
         { to: '/playground', label: 'Playground', position: 'left' },
         { to: '/analytics', label: 'Analytics', position: 'left' },
         {
+          to: 'https://docs.homotechsual.dev/',
+          label: 'Other Projects',
+          position: 'right',
+        },
+        {
           href: 'https://github.com/homotechsual/docusaurus-plugin-plausible',
           label: 'GitHub',
           position: 'right',
@@ -101,6 +106,7 @@ const config: Config = {
               label: 'npm',
               href: 'https://www.npmjs.com/package/@homotechsual/docusaurus-plugin-plausible',
             },
+            { label: 'Other Projects', href: 'https://docs.homotechsual.dev/' },
           ],
         },
       ],
