@@ -2,6 +2,9 @@
   "extends": "@docusaurus/tsconfig",
   "compilerOptions": {
     "baseUrl": ".",
-    "ignoreDeprecations": "6.0"
+    "ignoreDeprecations": "6.0",
+    "paths": {
+      "@homotechsual/docusaurus-plugin-plausible": ["../src/index.ts"]
+    }
   }
 }
