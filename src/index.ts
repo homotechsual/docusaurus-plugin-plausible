@@ -5,7 +5,7 @@ import type { PluginOptions, EmbedData } from './types.js';
 function pluginPlausible(
   _context: LoadContext,
   options: PluginOptions,
-): Plugin<void> {
+): Plugin<unknown> {
   const {
     domain,
     customDomain = 'plausible.io',
@@ -158,6 +158,6 @@ export function validateOptions({
 export default pluginPlausible as unknown as (
   context: LoadContext,
   options: unknown,
-) => Plugin<void>;
+) => Plugin<unknown>;
 
 export type { PluginOptions };
