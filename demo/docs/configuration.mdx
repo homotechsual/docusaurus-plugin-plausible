@@ -24,7 +24,7 @@ All options are passed as the second element of the plugin tuple in your `docusa
 | `excludePaths` | `string[]` | No | `[]` | Paths to exclude from tracking — each entry is a bare regex pattern |
 | `proxyApiEndpoint` | `string` | No | — | Override the API endpoint for sending events (sets `data-api` on the script tag) |
 
-## `fileDownloads` object options
+## `fileDownloads` Object Options
 
 When `fileDownloads` is an object rather than `true`, you can control which extensions are tracked:
 
@@ -35,7 +35,7 @@ When `fileDownloads` is an object rather than `true`, you can control which exte
 
 Default tracked extensions: `pdf`, `xlsx`, `docx`, `txt`, `rtf`, `csv`, `exe`, `key`, `pps`, `ppt`, `pptx`, `7z`, `pkg`, `rar`, `gz`, `zip`, `avi`, `mov`, `mp4`, `mpeg`, `wmv`, `midi`, `mp3`, `wav`, `wma`, `dmg`.
 
-## TypeScript example
+## TypeScript Example
 
 ```ts
 import type { Config } from '@docusaurus/types'

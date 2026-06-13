@@ -2,6 +2,8 @@
   "extends": "@docusaurus/tsconfig",
   "compilerOptions": {
     "baseUrl": ".",
+    "strict": true,
+    "forceConsistentCasingInFileNames": true,
     "ignoreDeprecations": "6.0",
     "paths": {
       "@homotechsual/docusaurus-plugin-plausible": ["../src/index.ts"]
