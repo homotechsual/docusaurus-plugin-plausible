@@ -3,6 +3,7 @@ import type { Config } from '@docusaurus/types'
 import type * as Preset from '@docusaurus/preset-classic'
 import { DOCUSAURUS_VERSION } from '@docusaurus/utils'
 import plausiblePlugin, { type PluginOptions as PlausiblePluginOptions } from '@homotechsual/docusaurus-plugin-plausible'
+import npm2yarn from '@docusaurus/remark-plugin-npm2yarn'
 
 const config: Config = {
   title: 'Plausible for Docusaurus',
@@ -40,6 +41,15 @@ const config: Config = {
       {
         docs: {
           sidebarPath: './sidebars.ts',
+          remarkPlugins: [
+            [
+              npm2yarn,
+              {
+                converters: ['yarn', 'pnpm', 'bun'],
+                sync: true,
+              },
+            ],
+          ],
         },
         blog: false,
         theme: {
