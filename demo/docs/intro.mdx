@@ -24,7 +24,7 @@ Add the plugin to your `docusaurus.config.ts`:
 
 ```ts
 import type { Config } from '@docusaurus/types'
-import plausiblePlugin, { type PluginOptions } from '@homotechsual/docusaurus-plugin-plausible'
+import plausiblePlugin, { type PluginOptions as PlausiblePluginOptions } from '@homotechsual/docusaurus-plugin-plausible'
 
 const config: Config = {
   plugins: [
@@ -32,7 +32,7 @@ const config: Config = {
       plausiblePlugin,
       {
         domain: 'your-site.com',
-      } satisfies PluginOptions,
+      } satisfies PlausiblePluginOptions,
     ],
   ],
 }
