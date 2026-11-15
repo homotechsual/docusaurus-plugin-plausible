@@ -8,7 +8,7 @@ import npm2yarn from '@docusaurus/remark-plugin-npm2yarn'
 const config: Config = {
   title: 'Plausible for Docusaurus',
   tagline: 'Privacy-first analytics for your Docusaurus site',
-  favicon: 'img/favicon.ico',
+  favicon: 'img/favicon.svg',
   url: 'https://plausible.docusaurus.homotechsual.dev',
   baseUrl: '/',
   onBrokenLinks: 'warn',
