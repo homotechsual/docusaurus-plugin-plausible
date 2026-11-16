@@ -81,6 +81,26 @@ html[data-theme='dark'] .docusaurus-highlight-code-line {
   --ifm-hero-text-color: #fff;
 }
 
+@keyframes heart {
+  0%, 40%, 80%, 100% { transform: scale(1); }
+  20%, 60% { transform: scale(1.15); }
+}
+
+.designedBy {
+  display: inline-flex;
+  align-items: center;
+}
+
+.designedBy .heart {
+  margin: 0.25rem;
+  animation: heart 1500ms infinite;
+  fill: var(--ifm-navbar-link-hover-color);
+}
+
+.designedBy a {
+  margin-inline-start: 0.25rem;
+}
+
 .sponsorship-link {
   display: flex;
   align-items: center;
@@ -102,6 +122,7 @@ html[data-theme='dark'] .docusaurus-highlight-code-line {
   20%, 60% { transform: scale(1.15); }
 }
 @media (prefers-reduced-motion: reduce) {
+  .designedBy .heart { animation: none; }
   .sponsorship-link:hover::before { animation: none; }
 }
 @media (max-width: 1359px) {
