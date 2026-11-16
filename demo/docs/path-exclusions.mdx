@@ -4,7 +4,7 @@ sidebar_position: 4
 
 # Path Exclusions
 
-The `excludePaths` option prevents pageview events from firing on specific paths.
+Use `excludePaths` to skip pageviews for matching paths.
 
 ## Configuration
 
@@ -17,7 +17,7 @@ Pass an array of bare regex patterns (strings, not regex literals):
 }
 ```
 
-Each pattern is compiled to a `RegExp` and tested against `window.location.pathname`. If any pattern matches, the pageview is suppressed.
+The plugin compiles each pattern as a `RegExp` and tests it against `window.location.pathname` on route changes. If a pattern matches, the plugin does not send that pageview.
 
 ## Pattern syntax
 
@@ -29,12 +29,12 @@ Each pattern is compiled to a `RegExp` and tested against `window.location.pathn
 | `\\.(json\|xml)$` | Paths ending in `.json` or `.xml` |
 
 :::warning Bare patterns only
-Pass patterns without regex delimiters. `"^/admin"` is correct; `"/^\/admin/"` is not — the slashes become part of the pattern.
+Pass patterns without regex delimiters. `"^/admin"` is correct; `"/^\/admin/"` is not. The slashes become part of the pattern.
 :::
 
 ## How it works
 
-At build time the plugin converts `excludePaths` to:
+At build time, the plugin adds the patterns to the page as regular expressions:
 
 ```html
 <script>
@@ -42,4 +42,4 @@ At build time the plugin converts `excludePaths` to:
 </script>
 ```
 
-The client module then checks this array on every route change before calling `window.plausible('pageview')`.
+On each route change, the client module checks the patterns before calling `window.plausible('pageview')`.

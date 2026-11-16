@@ -7,7 +7,7 @@ import npm2yarn from '@docusaurus/remark-plugin-npm2yarn'
 
 const config: Config = {
   title: 'Plausible for Docusaurus',
-  tagline: 'Privacy-first analytics for your Docusaurus site',
+  tagline: 'Add Plausible Analytics to your Docusaurus site',
   favicon: 'img/favicon.svg',
   url: 'https://plausible.docusaurus.homotechsual.dev',
   baseUrl: '/',
@@ -30,7 +30,7 @@ const config: Config = {
           authToken: process.env.PLAUSIBLE_SHARED_LINK_TOKEN ?? '',
           routeBasePath: '/analytics',
           title: 'Live Analytics',
-          description: 'Real visitor data for this demo site, powered by Plausible.',
+          description: 'Visitor statistics for this demo site, provided by Plausible.',
         },
       } satisfies PlausiblePluginOptions,
     ],

@@ -54,13 +54,12 @@ export default function PlaygroundPage() {
   return (
     <Layout
       title="Config Playground"
-      description="Interactively build your Plausible plugin configuration"
+      description="Preview a Plausible plugin configuration and its generated script URL"
     >
       <main className="container margin-vert--lg">
         <Heading as="h1">Config Playground</Heading>
         <p>
-          Configure the plugin options and see the generated Docusaurus config and resolved script URL
-          in real time.
+          Select plugin options to preview the generated Docusaurus config and Plausible script URL.
         </p>
 
         <div

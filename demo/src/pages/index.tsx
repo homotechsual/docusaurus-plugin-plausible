@@ -10,22 +10,22 @@ const features = [
   {
     title: 'Script Extensions',
     description:
-      'Enable hash routing, outbound link tracking, file downloads, revenue tracking, and more — one config option each.',
+      'Turn on hash-route tracking, outbound-link clicks, file downloads, revenue tracking, and other Plausible extensions with plugin options.',
   },
   {
     title: 'Path Exclusions',
     description:
-      'Exclude pages from analytics using regex patterns. Keep admin routes, staging paths, and internal pages out of your data.',
+      'Skip pageviews for paths that match your regex patterns, such as admin or staging routes.',
   },
   {
     title: 'Self-Hosted Support',
     description:
-      'Point the plugin at your own Plausible instance with customDomain. Proxy API requests through your own endpoint for extra privacy.',
+      'Set a custom script domain and, if needed, route event requests through your own endpoint.',
   },
   {
     title: 'TypeScript-First',
     description:
-      'Full type safety with the exported PluginOptions interface. Use satisfies in your config for complete IDE assistance.',
+      'Use the exported `PluginOptions` type for configuration checks and editor autocomplete.',
   },
 ]
 

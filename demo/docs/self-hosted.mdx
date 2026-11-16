@@ -4,11 +4,11 @@ sidebar_position: 5
 
 # Self-Hosted Plausible
 
-If you run your own Plausible instance, two options let you point the plugin at it.
+If you host Plausible yourself, use `customDomain` to load its script and `proxyApiEndpoint` to send events to a custom endpoint.
 
 ## `customDomain`
 
-Sets the hostname used for both the preconnect hint and the script URL. Defaults to `plausible.io`.
+Sets the hostname used for the script URL and preconnect hint. It defaults to `plausible.io`.
 
 ```ts
 {
@@ -25,7 +25,7 @@ https://analytics.your-company.com/js/plausible.js
 
 ## `proxyApiEndpoint`
 
-Sets the `data-api` attribute on the script tag, routing event submissions through a custom endpoint. Useful when you want to proxy events through your own domain to avoid ad-blockers.
+Sets the script's `data-api` attribute so Plausible sends events to a custom endpoint. For example, you can route events through your own domain.
 
 ```ts
 {
@@ -34,7 +34,7 @@ Sets the `data-api` attribute on the script tag, routing event submissions throu
 }
 ```
 
-Plausible's script will POST pageview events to `https://your-site.com/api/event` instead of the default `https://plausible.io/api/event`.
+The script sends events to `https://your-site.com/api/event` instead of Plausible's default `https://plausible.io/api/event`. This changes the event endpoint, not the script URL.
 
 ## Combined example
 

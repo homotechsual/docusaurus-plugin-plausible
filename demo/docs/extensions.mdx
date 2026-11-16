@@ -4,7 +4,7 @@ sidebar_position: 3
 
 # Extensions
 
-Plausible's script extensions add tracking capabilities beyond basic pageviews. Each extension appends a segment to the script filename. The plugin builds the filename automatically from your config.
+Plausible provides optional script extensions for tracking events such as outbound-link clicks and file downloads. Enable them with plugin options; the plugin builds the script filename from those options.
 
 For example, enabling `hashBasedRouting` and `outboundLinks` loads:
 
@@ -16,7 +16,7 @@ Use the [Config Playground](/playground) to see the exact filename and URL for a
 
 ## `hashBasedRouting`
 
-Tracks navigation within single-page apps that use hash-based routing (`example.com/#/about`). Without this, Plausible only fires on full History API navigations.
+Tracks navigation when a single-page app uses the URL fragment for routes, such as `example.com/#/about`.
 
 ```ts
 { hashBasedRouting: true }
@@ -24,7 +24,7 @@ Tracks navigation within single-page apps that use hash-based routing (`example.
 
 ## `outboundLinks`
 
-Automatically fires a `Link: Click` event whenever a visitor clicks a link to an external domain.
+Sends a `Link: Click` event when a visitor clicks a link to an external domain.
 
 ```ts
 { outboundLinks: true }
@@ -32,7 +32,7 @@ Automatically fires a `Link: Click` event whenever a visitor clicks a link to an
 
 ## `fileDownloads`
 
-Fires a `File Download` event when a visitor clicks a link to a tracked file type.
+Sends a `File Download` event when a visitor clicks a link to a tracked file type.
 
 ```ts
 // Use defaults (pdf, zip, docx, and ~20 more)
@@ -47,7 +47,7 @@ Fires a `File Download` event when a visitor clicks a link to a tracked file typ
 
 ## `taggedEvents`
 
-Fires custom events on HTML elements that have the `data-analytics` attribute. No JavaScript required on your part — just add the attribute.
+Sends a custom event for an HTML element with the `data-analytics` attribute. Add the attribute in your markup; you don't need to add an event listener.
 
 ```html
 <button data-analytics='"Signup"'>Sign up</button>
@@ -59,7 +59,7 @@ Fires custom events on HTML elements that have the `data-analytics` attribute. N
 
 ## `revenue`
 
-Enables ecommerce revenue tracking. Allows passing a `revenue` object with `currency` and `amount` when calling `window.plausible`.
+Enables revenue tracking. Pass a `revenue` object with `currency` and `amount` when calling `window.plausible`.
 
 ```ts
 { revenue: true }
@@ -67,7 +67,7 @@ Enables ecommerce revenue tracking. Allows passing a `revenue` object with `curr
 
 ## `captureOnLocalhost`
 
-By default Plausible ignores `localhost`. Enable this to capture events during local development.
+Plausible ignores events from `localhost` by default. Enable this option to track local visits.
 
 ```ts
 { captureOnLocalhost: true }
@@ -75,9 +75,9 @@ By default Plausible ignores `localhost`. Enable this to capture events during l
 
 ## `manualPageviews`
 
-Disables Plausible's built-in automatic pageview on script load. The plugin's Docusaurus client module still fires pageviews on every route change via `window.plausible('pageview')`.
+Disables the pageview Plausible would normally send when its script loads. The plugin still sends pageviews when the Docusaurus route changes, using `window.plausible('pageview')`.
 
-Use this when you want full control over when pageviews are sent (e.g. to exclude certain routes before the event fires).
+Use this when you send the initial pageview yourself or need to avoid a duplicate on page load. To exclude routes from the plugin's route-change pageviews, use [`excludePaths`](/docs/path-exclusions).
 
 ```ts
 { manualPageviews: true }
@@ -85,7 +85,7 @@ Use this when you want full control over when pageviews are sent (e.g. to exclud
 
 ## `compat`
 
-Uses the compatibility script variant, which works in browsers that block the standard tracker (e.g. Firefox with enhanced tracking protection).
+Loads Plausible's compatibility script for browsers that block the standard tracker.
 
 ```ts
 { compat: true }
@@ -93,7 +93,7 @@ Uses the compatibility script variant, which works in browsers that block the st
 
 ## `pageviewProps`
 
-Allows attaching custom properties to every automatic pageview event. Useful for segmenting traffic by plan, locale, or any other dimension you pass via `window.plausible.pageviewProps`.
+Attaches custom properties to each automatic pageview. Set the values on `window.plausible.pageviewProps`, for example to segment traffic by plan or locale.
 
 ```ts
 { pageviewProps: true }

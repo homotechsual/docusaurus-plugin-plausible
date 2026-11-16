@@ -30,13 +30,13 @@ export default function DemoPage() {
   }
 
   return (
-    <Layout title="Live Demo" description="See the Plausible plugin running on this site">
+    <Layout title="Live Demo" description="Check the Plausible plugin's runtime state on this site">
       <main className="container margin-vert--lg">
         <Heading as="h1">Live Demo</Heading>
         <p>
-          This site is tracked with <code>@homotechsual/docusaurus-plugin-plausible</code> using the
-          domain <code>plausible.docusaurus.homotechsual.dev</code>. The sections below reflect the
-          plugin's runtime state on this page.
+          This site uses <code>@homotechsual/docusaurus-plugin-plausible</code> with the domain{' '}
+          <code>plausible.docusaurus.homotechsual.dev</code>. Check the script status below or send a
+          pageview event.
         </p>
 
         {isDev ? (
@@ -46,8 +46,8 @@ export default function DemoPage() {
             </div>
             <div className="admonition-content">
               <p>
-                The Plausible script is not injected in development mode (<code>NODE_ENV !== 'production'</code>).
-                Build and serve the demo to see this page fully working:
+                The plugin injects the Plausible script only in production builds. To test this page,
+                build and serve the demo from the repository root:
               </p>
               <pre>
                 <code>
@@ -76,7 +76,7 @@ export default function DemoPage() {
                   </tr>
                   <tr>
                     <th style={{ paddingRight: '1rem' }}>Script src</th>
-                    <td>{scriptSrc ? <code>{scriptSrc}</code> : '—'}</td>
+                    <td>{scriptSrc ? <code>{scriptSrc}</code> : 'Not found'}</td>
                   </tr>
                 </tbody>
               </table>
@@ -85,8 +85,8 @@ export default function DemoPage() {
             <section>
               <Heading as="h2">Manual pageview</Heading>
               <p>
-                Click the button to fire a manual <code>pageview</code> event. Verify it appears in
-                your Plausible dashboard under <strong>plausible.docusaurus.homotechsual.dev</strong>.
+                Send a <code>pageview</code> event for this page, then check the Plausible dashboard
+                for <strong>plausible.docusaurus.homotechsual.dev</strong>.
               </p>
               <button
                 className="button button--primary"
