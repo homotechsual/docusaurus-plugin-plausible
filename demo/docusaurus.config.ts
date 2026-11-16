@@ -61,6 +61,7 @@ const config: Config = {
   themeConfig: {
     navbar: {
       title: 'Plausible Plugin',
+      logo: { alt: 'Plausible', src: 'img/favicon.svg' },
       items: [
         {
           type: 'docSidebar',
@@ -72,9 +73,15 @@ const config: Config = {
         { to: '/playground', label: 'Playground', position: 'left' },
         { to: '/analytics', label: 'Analytics', position: 'left' },
         {
-          to: 'https://docs.homotechsual.dev/',
-          label: 'Other Projects',
+          label: 'More Projects',
           position: 'right',
+          items: [
+            { label: 'OpenGraph', href: 'https://og.docusaurus.homotechsual.dev/' },
+            { label: 'FAQs', href: 'https://faqs.docusaurus.homotechsual.dev/' },
+            { label: 'Showcase', href: 'https://showcase.docusaurus.homotechsual.dev/' },
+            { label: 'Waypoint', href: 'https://waypoint.docusaurus.homotechsual.dev/' },
+            { label: 'All Projects', href: 'https://docs.homotechsual.dev/' },
+          ],
         },
         {
           href: 'https://github.com/sponsors/homotechsual',

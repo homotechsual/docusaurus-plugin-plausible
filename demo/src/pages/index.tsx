@@ -4,6 +4,7 @@ import useDocusaurusContext from '@docusaurus/useDocusaurusContext'
 import Layout from '@theme/Layout'
 import Heading from '@theme/Heading'
 import clsx from 'clsx'
+import styles from './index.module.css'
 
 const features = [
   {
@@ -31,7 +32,7 @@ const features = [
 function Feature({ title, description }: { title: string; description: string }) {
   return (
     <div className={clsx('col col--3')}>
-      <div className="text--center padding-horiz--md padding-vert--lg">
+      <div className="padding-horiz--md">
         <Heading as="h3">{title}</Heading>
         <p>{description}</p>
       </div>
@@ -41,7 +42,7 @@ function Feature({ title, description }: { title: string; description: string })
 
 function HomepageFeatures() {
   return (
-    <section style={{ padding: '2rem 0', width: '100%' }}>
+    <section className={styles.features}>
       <div className="container">
         <div className="row">
           {features.map((props, idx) => (
@@ -56,13 +57,13 @@ function HomepageFeatures() {
 function HomepageHero() {
   const { siteConfig } = useDocusaurusContext()
   return (
-    <header className={clsx('hero hero--primary')}>
+    <header className={clsx('hero hero--primary', styles.hero)}>
       <div className="container">
         <Heading as="h1" className="hero__title">
           {siteConfig.title}
         </Heading>
         <p className="hero__subtitle">{siteConfig.tagline}</p>
-        <div style={{ display: 'flex', gap: '1rem', flexWrap: 'wrap' }}>
+        <div className={styles.buttons}>
           <Link className="button button--secondary button--lg" to="/docs/intro">
             Documentation
           </Link>
