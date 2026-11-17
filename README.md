@@ -36,6 +36,14 @@ export default {
 
 For all configuration options, extensions, path exclusions, and self-hosted setup, see the [docs](https://plausible.docusaurus.homotechsual.dev).
 
+## Demo site integrations
+
+The demo homepage displays the package version and links to the current release.
+Its production build generates OpenGraph images for documentation and pages using
+`@homotechsual/docusaurus-og` and locally installed Inter fonts. Plausible tracking
+remains configured for `plausible.docusaurus.homotechsual.dev`; the OG integration
+is demo-only and is not enabled automatically for plugin consumers.
+
 ## Licence
 
 Apache-2.0

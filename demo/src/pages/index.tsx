@@ -3,6 +3,7 @@ import Link from '@docusaurus/Link'
 import useDocusaurusContext from '@docusaurus/useDocusaurusContext'
 import Layout from '@theme/Layout'
 import Heading from '@theme/Heading'
+import packageInfo from '../../../package.json'
 import clsx from 'clsx'
 import styles from './index.module.css'
 
@@ -71,6 +72,11 @@ function HomepageHero() {
             Config Playground
           </Link>
         </div>
+        <p className="padding-top--md margin-bottom--none">
+          <Link className="button button--outline button--secondary button--sm" to="https://github.com/homotechsual/docusaurus-plugin-plausible/releases/latest">
+            Current release: v{packageInfo.version}
+          </Link>
+        </p>
       </div>
     </header>
   )

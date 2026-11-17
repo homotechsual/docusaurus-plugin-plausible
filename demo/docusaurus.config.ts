@@ -4,6 +4,7 @@ import type * as Preset from '@docusaurus/preset-classic'
 import { DOCUSAURUS_VERSION } from '@docusaurus/utils'
 import plausiblePlugin, { type PluginOptions as PlausiblePluginOptions } from '@homotechsual/docusaurus-plugin-plausible'
 import npm2yarn from '@docusaurus/remark-plugin-npm2yarn'
+import { renderPage } from './imageRenderers.js'
 
 const config: Config = {
   title: 'Plausible for Docusaurus',
@@ -22,6 +23,16 @@ const config: Config = {
     locales: ['en'],
   },
   plugins: [
+    [
+      '@homotechsual/docusaurus-og',
+      {
+        path: 'og-images',
+        imageRenderers: {
+          'docusaurus-plugin-content-docs': renderPage,
+          'docusaurus-plugin-content-pages': renderPage,
+        },
+      },
+    ],
     [
       plausiblePlugin,
       {
